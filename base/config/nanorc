@@ -1,0 +1,14 @@
+include /usr/share/nano/sh.nanorc
+include /usr/share/nano/default.nanorc
+include /usr/share/nano/java.nanorc
+include /usr/share/nano/python.nanorc
+
+
+
+
+
+set autoindent
+set tabsize 4
+set tabstospaces
+set const
+

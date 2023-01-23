@@ -1,0 +1,195 @@
+#!/bin/bash
+
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+
+. ~/linuxenv/base/styles/setting 
+
+#echo -e " $AST Detecting architecture"
+MACHINETYPE="$(uname -m)";
+ARCH="${MACHINETYPE}";
+echo -e "$BULLET Architecture: $ARCH";
+
+# Directorio principal del entorno de trabajo para Docker
+MSA="/msa"  # microservices environment
+
+# Deployments  Docker
+DEPLOY="/deployments"
+
+# Custom main dir
+CE="custom-env"
+
+# todos mis scripts para simplificar tareas
+if [ -d "$HOME/_myscripts" ] ; then
+    export PATH="$PATH:$HOME/_myscripts"
+fi
+
+
+# lo mismo pero con algunos retoques
+alias ll='clear && ls -lFh'
+alias la='clear && ls -a'
+alias l='clear && ls -lCFGh'
+#alias vimg='vim.gtk'
+#alias vi='nvim'
+alias ..='cd ..'
+
+# gestion rapida de containers, stop, start, remove
+if [ -d "$DEPLOY/manage" ] ; then
+   export PATH="$PATH:$DEPLOY/manage"
+fi
+
+# mi area de trabajo docker
+#if [ -d "$MSA/cmt/" ] ; then
+#   PATH="$PATH:$MSA/cmt"
+#fi
+
+
+#  entorno de Programacion Go
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH="$HOME:/Go_workspace"
+
+
+
+# systemctl
+alias sctlstat='sudo systemctl "$@" status'
+alias sctlstop='sudo systemctl "$@" stop'
+alias sctlinit='sudo systemctl "$@" start'
+
+# apt 
+alias pkginstall='sudo aptitude install "$@"'
+alias pkgreinstall='sudo aptitude reinstall'
+alias pkgsearch='aptitude search "$@"'
+alias pkgremove='sudo aptitude remove'
+alias pkginfo='aptitude info "$@" '
+alias pkgupdate='sudo aptitude update'
+
+# dnf
+alias dnfinstall='sudo dnf install "$@"'
+alias dnfsearch='sudo dnf search "$@"'
+alias dnfremove='sudo dnf remove "$@"'
+alias dnfupdate='sudo dnf update "$@"'
+
+
+# Docker 
+if [ -d /msa/cmt/deploy/micro-LAMP ]; then
+   export PATH="$PATH:/msa/cmt/deploy/micro-LAMP/"
+fi
+
+# to see diff of this files in my laptop vs desktop/PC
+#cmd=$(md5sum ~/linuxenv/base/config/workshop)
+#echo -e "$cmd"
+
+# install my favs apps
+# if [ -f ~/linuxenv/base/pkg/check_apps ]; then
+#    bash ~/linuxenv/base/pkg/check_apps
+# fi
+
+# my scripts ready to use it
+export PATH="$PATH:$HOME/linuxenv/base/scripts"
+
+# enable .vimrc
+if [ -f ~/.vimrc ]; then
+   echo -e "$BULLET.vimrc is enabled"
+else
+   if [ -f ~/linuxenv/base/config/vimrc ]; then
+      ln -s ~/linuxenv/base/config/vimrc .vimrc
+      echo -e "$BULLET .vimrc has been enabled"
+   else
+      echo -e "$ALERT .vimrc not found!"
+   fi
+fi
+
+
+# vim setting 
+link_vim() {
+    if [ ! -f ~/.vim/vimrc ]; then
+       ln -s ~/linuxenv/base/config/vimrc ~/.vim/vimrc
+        echo -e "$BULLET .vim/vimrc enabled!" 
+    fi
+}
+link_autoload() {
+    if [ ! -d ~/.vim/autoload ]; then
+	   ln -s ~/linuxenv/base/config/autoload ~/.vim/autoload
+           echo -e "$OK .vim/autoload enabled" 
+    fi
+}
+link_plugged() {
+    if [ ! -d ~/.vim/plugged ]; then
+	#ln -s ~/linuxenv/base/config/plugged ~/.vim/plugged
+        mkdir ~/.vim/plugged
+        echo -e "$BULLET  Directory '.vim/plugged' enabled!" 
+    fi
+}
+link_all() {
+   link_vim
+   link_autoload
+   link_plugged
+}
+
+if [ ! -d ~/.vim ]; then
+   mkdir -p ~/.vim
+   echo -e "$OK ~.vim creado!"
+   link_all
+fi
+#--- end vim setup
+
+
+# enable .config/nvim/init.vim
+link_initvim() {
+   ln -s ~/linuxenv/base/config/init.vim  ~/.config/nvim/init.vim
+}
+if [ -f ~/.config/nvim/init.vim ]; then
+   echo -e "$BULLET init.vim for neovim enabled"
+else
+   # does init.vim exist?
+   if [ -f ~/linuxenv/base/config/init.vim ]; then
+      # does the config dir exist? 
+      if [ ! -d ~/.config/nvim ]; then
+	      mkdir -p ~/.config/nvim
+              link_initvim
+
+      else 
+	 link_initvim
+      fi
+
+   else
+
+      echo -e "$WARNING init.vim not found at base.!"
+
+   fi
+fi
+
+# prompt
+export PS1="\H \t [ \[\e[36;40m\]\w\[\e[m\] ] >  "
+export PS1='\[\e[0m\]\t\[\e[m\] \[\e[0m\](\[\e[0;1;38;5;46m\]$(ip route get 1.1.1.1 | awk -F"src " '"'"'NR==1{split($2,a," ");print a[1]}'"'"')\[\e[0m\])\[\e[m\] \[\e[0;38;5;46m\]\w\[\e[m\] \[\e[0m\]\$\[\e[m\] \[\e0'
+
+
+export PS1='\[\e[0m\][\[\e[0;38;5;47m\]$(ip route get 1.1.1.1 | awk -F"src " '"'"'NR==1{split($2,a," ");print a[1]}'"'"')\[\e[0m\]]\[\e[m\] \[\e[0m\]\t\[\e[m\] \[\e[0;38;5;76m\]\u\[\e[m\] @\h  \n \[\e[0;1;7;38;5;40;48;5;232m\]\w\[\e[m\] \[\e[0m\](\[\e[0m\]\j\[\e[0m\])\[\e[m\] \[\e[0m\]$(git branch 2>/dev/null | grep '"'"'^*'"'"' | colrm 1 2)\[\e[m\] \[\e[m\]\n\[\e[0m\]$ '
+
+
+# favorite editor
+alias st3='~/linuxenv/ed/sublime_text'  #<--- simple / pre-installed
+
+# Check sublime text (apt install)
+if [ "$ARCH" = "amd64" ] || [ "$ARCH" = "i386" ]; then 
+	if [ ! -f /opt/sublime_text/sublime_text ]; then
+	  sudo bash $HOME/linuxenv/tools/install_sublime
+	  echo -e "$BULLET Sublime text was installed"
+	else
+	  echo -e "$OK Sublime text is available, can run as 'st3'"
+	  export PATH="$PATH:$HOME:/opt/sublime_text/"
+	fi
+fi
+
+# enable my python packages
+#export PYTHONPATH="$HOME/pypkg"
+#export JUPYTER_PATH=$PYTHONPATH:$JUPYTER_PATH
+#export PATH=$PATH:$PYTHONPATH
+
+echo -e "$BULLET Optional packages can be installed from ~/$CE/base/pkg"
+

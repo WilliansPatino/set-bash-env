@@ -1,0 +1,28 @@
+#!/bin/bash
+#
+# Improve the DNS resolution with internal DNS. 
+
+# I prefer this way instead netplan (ubuntu)	10.8.2020, 9h27
+
+if [ -f $HOME/linuxenv/base/styles/setting ]; then
+  . $HOME/linuxenv/base/styles/setting
+fi
+
+if [ ! -d ~/autoservice ]; then
+	mkdir $HOME/autoservice
+fi
+resolvconf="$HOME/autoservice/resolv.conf"
+
+# keep version of resolv.conf following date as clue
+last='/etc/resolv.conf'_$(date +%d.%m.%Y_%Hh%M)
+
+echo "search grupojules.com" > $resolvconf
+    {
+    	echo "nameserver 172.20.43.212  # octopus" 
+      	echo "nameserver 172.20.43.214  # mailserver" 
+     } >> $resolvconf
+if [[ -L "/etc/resolv.conf" ]]; then
+   sudo mv /etc/resolv.conf $last
+fi
+sudo ln -s  $resolvconf /etc/resolv.conf 
+echo -e "$OK  Local DNS enabled."

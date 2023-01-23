@@ -1,0 +1,28 @@
+# Let NetworkManager manage all devices on this system
+network:
+  version: 2
+  renderer: NetworkManager
+  wifis:
+   wlp3s0:
+    access-points:
+     "ABACANTVWIFI1381":
+      password: "********"
+    dhcp4: yes
+    dhcp6: no
+  
+  ethernets:
+   enp2s0:
+    dhcp4: no
+    dhcp6: no
+   
+# Bridges device
+  bridges:
+    br0:
+      interfaces: [wlp3s0]
+      dhcp4: true
+      dhcp6: no
+    br1: 
+      interfaces: [enp2s0]
+      dhcp4: true
+      dhcp6: no
+

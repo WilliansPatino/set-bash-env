@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# WP      net ports
+
+docker ps

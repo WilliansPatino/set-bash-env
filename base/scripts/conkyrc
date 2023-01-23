@@ -1,0 +1,97 @@
+background no
+font Noto Mono:size=7
+xftfont Sans:size=7
+use_xft yes
+xftalpha 0.9
+update_interval 3.0
+total_run_times 0
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 200 5
+maximum_width 300
+draw_shades yes
+draw_outline no
+draw_borders yes
+draw_graph_borders yes
+default_color white
+default_shade_color black
+default_outline_color green
+alignment top_right
+gap_x 12
+gap_y 35
+no_buffers yes
+uppercase no
+cpu_avg_samples 1
+override_utf8_locale no
+uppercase yes # set to yes if you want all text to be in uppercase
+
+TEXT
+${color white}SYSTEM ${hr 1}${color}
+Hostname: $alignr$nodename
+Kernel: $alignr$kernel
+Uptime: $alignr$uptime
+
+CPU: ${alignr}${freq} MHz
+Processes: ${alignr}$processes ($running_processes running)
+Load: ${alignr}$loadavg
+
+${color Tan1}CPU temperature    ${color}${exec sensors | grep 'Core 0' | awk '{ print $3 }'}
+${color Tan1}CPU temperature    ${color}${exec sensors | grep 'Core 1' | awk '{ print $3 }'}
+${color cyan}Fan RPM: ${color}${exec sensors | grep 'Exhaust' | awk '{ print $3}'}
+
+CPU1 ${cpu cpu1}% ${cpubar 4 cpu1}
+CPU2 ${cpu cpu2}% ${cpubar 4 cpu2}
+
+Ram ${alignr}$mem / $memmax ($memperc%)
+${membar 4}
+#swap ${alignr}$swap / $swapmax ($swapperc%)
+#${swapbar 4}
+Free: $memfree ${membar 4}
+
+${color green}CPU/Process ${hr 1}${color}
+Highest CPU $alignr CPU% MEM%
+${top name 1}$alignr${top cpu 1}${top mem 1}
+${top name 2}$alignr${top cpu 2}${top mem 2}
+${top name 3}$alignr${top cpu 3}${top mem 3}
+${top name 4}$alignr${top cpu 4}${top mem 4}
+${top name 5}$alignr${top cpu 5}${top mem 5}
+
+Highest MEM $alignr CPU% MEM%
+${top_mem name 1}$alignr${top_mem cpu 1}${top_mem mem 1}
+${top_mem name 2}$alignr${top_mem cpu 2}${top_mem mem 2}
+${top_mem name 3}$alignr${top_mem cpu 3}${top_mem mem 3}
+${top_mem name 4}$alignr${top_mem cpu 4}${top_mem mem 4}
+${top_mem name 5}$alignr${top_mem cpu 4}${top_mem mem 5}
+
+${color white}Filesystem ${hr 1}${color}
+
+Root: ${fs_free /} / ${fs_size /} ${fs_bar 4 /}
+# Home: ${alignr}${fs_free /home} / ${fs_size /home}
+# ${fs_bar 4 /home}
+
+#_dsk480: ${alignr}${fs_free /_ext480} / ${fs_size /_ext480}
+#${fs_bar 4 /_ext480}
+
+ext_ntfs_sd3: ${alignr}${fs_free /media/wp/_ext_sd3_ntfs_} / ${fs_size /media/wp/_ext_sd3_ntfs_}
+${fs_bar 4 /media/wp/_ext_sd3_ntfs_}
+
+ext_ntfs_sd5: ${alignr}${fs_free /media/wp/_ext_sd5_ntfs_} / ${fs_size /media/wp/_ext_sd5_ntfs_}
+${fs_bar 4 /media/wp/_ext_sd5_ntfs_}
+
+# pc chachita 
+SDA5: ${alignr}${fs_free /media/wp/_sda5_} / ${fs_size /media/wp/_sd5_}
+${fs_bar 4 /media/wp/_sda5_}
+SDA6: ${alignr}${fs_free /media/wp/_sda6_} / ${fs_size /media/wp/_sd6_}
+${fs_bar 4 /media/wp/_sda6_}
+
+# network
+${color white}NETWORK Kb/S ${hr 1}${color}
+Down ${downspeed wlp3s0} ${alignr}Up ${upspeed wlp3s0}
+${downspeedgraph wlp3s0 15,100} ${alignr}${upspeedgraph wlp3s0 15,100}
+Total ${totaldown wlp3s0} ${alignr}Total ${totalup wlp3s0}
+
+#${color white}WEATHER ${hr 1}${color}
+

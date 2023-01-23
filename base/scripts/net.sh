@@ -1,0 +1,1 @@
+watch -d netstat -nr

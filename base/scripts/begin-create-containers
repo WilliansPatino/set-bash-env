@@ -1,0 +1,44 @@
+#!/bin/bash
+
+#  Willians Patino, 21.04.2020, 9h51
+
+#   Crear containers
+
+# servers where will be running docker/containers
+server_ip="192.168.250.6"
+
+ ##  TEST as  default 
+OPTcontainer_name="test"   
+
+#   grupojules.com   as   default
+OPTdomain="grupojules.com"
+
+usage="Programa para crear containers
+
+\e[32m Uso: $(basename "$0")  [-h] [-c WEBSITE [-d ejemplo.com] [-i 192.168.250.6] \e[0m 
+
+donde:
+	-c  WEBSITE 		nombre del container (default: ${OPTcontainer_name^^})
+	-d  ejemplo.com		nombre del dominio (default:  $OPTdomain)
+	-ip  192.168.250.6	ip del servidor docker
+	-h 					show this help text"
+
+
+while getopts ':hcdi:' option; do
+  case "$option" in
+    c) echo -e "\t\e[32m $usage \e[0m\n"
+       exit 0
+       ;;
+    d) OPTdomain=$OPTARG
+       ;;
+    :) printf "\t\e[31m missing argument for -%s \e[0m \n" "$OPTARG" >&2
+       echo -e "$usage" >&2
+       exit 1
+       ;;
+   \?) printf "\t\e[31m illegal option: -%s  \e[0m \n" "$OPTARG" >&2
+       echo -e "$usage" >&2
+       exit 1
+       ;;
+  esac
+done
+shift $((OPTIND - 1))

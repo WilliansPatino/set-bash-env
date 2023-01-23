@@ -1,0 +1,3 @@
+sudo ip link set wls4 down
+ip r
+ping -c2 google.com

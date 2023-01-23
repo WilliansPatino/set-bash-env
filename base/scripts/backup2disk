@@ -1,0 +1,37 @@
+#!/bin/bash
+#
+#  W.Patino,  last: 31.10.2020, 11h44, CCS
+
+#  syncronize with my backup external disks 
+#
+#	-- Changeslog
+#	indicate which disk must be syncronize
+
+
+is_testing=false
+
+# First of all, backup home-dir or any existing directories
+source=$1
+
+# destination, any external or local disk
+destination=$2
+if [ -z "$source" ]; then
+  echo -e "Debe indicar una ruta de directorio ORIGEN existente"
+  exit 0
+fi
+
+if [ -z "$destination" ]; then
+  echo -e "Debe indicar una ruta de disco DESTINO"
+  exit 0
+fi
+
+# begin, exclude some apps directories
+if ! $is_testing; then
+	echo -e "Copying all  $source  into $destination "
+	rsync -av $source  $destination/ \
+	--exclude={'.cache','.mozilla','.config','.aptitude','.local','.vim','anaconda3','.icons','.themes','.icon','.thunderbird','.vscode'}
+else
+    echo -e "Testing backup"
+    echo -e "... from $source to $destination"
+	
+fi

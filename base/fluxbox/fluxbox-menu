@@ -1,0 +1,135 @@
+# This is an automatically generated file.
+# Please see <file:/usr/share/doc/menu/README> for information.
+
+# to use your own menu, copy this to ~/.fluxbox/menu, then edit
+# ~/.fluxbox/init and change the session.menuFile path to ~/.fluxbox/menu
+
+[begin] (Fluxbox)
+
+# My Favorites
+[submenu] (My Favorites Tools) {}
+[exec] (Audacious) {  /usr/bin/audacious }
+[exec] (Brave) { /usr/bin/brave-browser }
+[exec] (terminal) { gnome-terminal } 
+[exec] (Telegram) { telegram-desktop } 
+[exec] (Sublime text) { /opt/sublime_text/sublime_text } 
+[exec] (Thunderbird) { /usr/bin/thunderbird } 
+[exec] (Chromiun) { /usr/bin/chromium-browser } 
+[exec] (Xterm) { xterm -fb cyan -bg black} 
+[exec] (Lxterminal) { lxterminal } 
+[exec] (Dbase explorer) { dbeaver } 
+[exec] (MIn) {/usr/bin/min } 
+[exec] (Clementine) {clementine } 
+[exec] (VLC) {vlc } 
+[exec] (vmware) {/usr/bin/vmplayer } 
+[exec] (Opera) {/usr/bin/opera } </usr/share/pixmaps/opera.xpm>
+[exec] (Falkon) {/usr/bin/falkon } </usr/share/pixmaps/opera.xpm>
+[exec] (Firefox) {/usr/bin/firefox } </usrlib/firefox/Throbber-small.gif>
+[exec] (Terminator) {/usr/bin/terminator} </usr/share/pixmaps/terminator.png>
+[exec] (xtightvncviewer) {/usr/bin/xtightvncviewer} <>
+[exec] (Remote Desktop) {/usr/bin/remmina} <>
+[exec] (Transmission BitTorrent Client (GTK\)) {/usr/bin/transmission-gtk} </usr/share/pixmaps/transmission.xpm>
+[exec] (Process/Jobs HTOP) { xterm -T "hTop" -e htop} <>
+[exec] (Process/Jobs) { xterm -T "Top" -e /usr/bin/top} <>
+[exec] (Utilisations des disques) { xterm -T "Utilisation des disques" -e ~/_myLinuxENV/scripts/disk.sh} <>
+[exec] (Utilisations des disques comme Mega) { xterm -T "Utilisation des disques" -e ~/_myLinuxENV/scripts/disk-m.sh} <>
+[exec] (System Events by dmesg) { xterm -T "Events / dmesg" -e ~/_myLinuxENV/scripts/events.sh} <>
+[exec] (File Manager/xfe) {/usr/bin/xfe} <>
+[exec] (File Manager/Nautilus) {/usr/bin/nautilus} <>
+[exec] (File Manager/Nemo) {/usr/bin/nemo} <>
+[exec] (VM Manager) {/usr/bin/virt-manager } <>
+[end]
+
+# Automatically generated file. Do not edit (see /usr/share/doc/menu/html/index.html)
+
+   [submenu] (Applications) {}
+      [submenu] (Accessibility) {}
+         [exec] (Xmag) {xmag} <>
+      [end]
+      [submenu] (Editors) {}
+         [exec] (Xedit) {xedit} <>
+      [end]
+      [submenu] (Graphics) {}
+         [exec] (X Window Snapshot) {xwd | xwud} <>
+      [end]
+      [submenu] (Network) {}
+         [submenu] (Communication) {}
+            [exec] (Telnet) { x-terminal-emulator -T "Telnet" -e /usr/bin/telnet.netkit} <>
+            [exec] (Xbiff) {xbiff} <>
+            [exec] (xtightvncviewer) {/usr/bin/xtightvncviewer} <>
+         [end]
+         [submenu] (File Transfer) {}
+            [exec] (Transmission BitTorrent Client (GTK\)) {/usr/bin/transmission-gtk} </usr/share/pixmaps/transmission.xpm>
+         [end]
+         [submenu] (Web Browsing) {}
+            [exec] (Google Chrome) {/opt/google/chrome/google-chrome} </opt/google/chrome/product_logo_32.xpm>
+         [end]
+      [end]
+      [submenu] (Programming) {}
+         [exec] (GDB) { x-terminal-emulator -T "GDB" -e /usr/bin/gdb} <>
+      [end]
+      [submenu] (Science) {}
+         [submenu] (Mathematics) {}
+            [exec] (Bc) { x-terminal-emulator -T "Bc" -e /usr/bin/bc} <>
+            [exec] (Dc) { x-terminal-emulator -T "Dc" -e /usr/bin/dc} <>
+            [exec] (Xcalc) {xcalc} <>
+         [end]
+      [end]
+      [submenu] (Shells) {}
+         [exec] (Bash) { x-terminal-emulator -T "Bash" -e /bin/bash --login} <>
+         [exec] (Dash) { x-terminal-emulator -T "Dash" -e /bin/dash -i} <>
+         [exec] (Sh) { x-terminal-emulator -T "Sh" -e /bin/sh --login} <>
+      [end]
+      [submenu] (System) {}
+         [submenu] (Administration) {}
+            [exec] (Editres) {editres} <>
+            [exec] (Xclipboard) {xclipboard} <>
+            [exec] (Xfontsel) {xfontsel} <>
+            [exec] (Xkill) {xkill} <>
+            [exec] (Xrefresh) {xrefresh} <>
+         [end]
+         [submenu] (Hardware) {}
+            [exec] (Xvidtune) {xvidtune} <>
+         [end]
+         [submenu] (Monitoring) {}
+            [exec] (Pstree) { x-terminal-emulator -T "Pstree" -e /usr/bin/pstree.x11} </usr/share/pixmaps/pstree16.xpm>
+            [exec] (Top) { x-terminal-emulator -T "Top" -e /usr/bin/top} <>
+            [exec] (Xconsole) {xconsole -file /dev/xconsole} <>
+            [exec] (Xev) {x-terminal-emulator -e xev} <>
+            [exec] (Xload) {xload} <>
+         [end]
+         [submenu] (Package Management) {}
+            [exec] (Aptitude Package Manager (text\)) { x-terminal-emulator -T "Aptitude Package Manager (text)" -e /usr/bin/aptitude-curses} <>
+         [end]
+      [end]
+      [submenu] (Viewers) {}
+         [exec] (Xditview) {xditview} <>
+      [end]
+   [end]
+   [submenu] (Games) {}
+      [submenu] (Toys) {}
+         [exec] (Oclock) {oclock} <>
+         [exec] (Xclock (analog\)) {xclock -analog} <>
+         [exec] (Xclock (digital\)) {xclock -digital -update 1} <>
+         [exec] (Xeyes) {xeyes} <>
+         [exec] (Xlogo) {xlogo} <>
+      [end]
+   [end]
+   [submenu] (Help) {}
+      [exec] (Xman) {xman} <>
+   [end]
+   [submenu] (Window Managers) {}
+      [restart] (FluxBox)  {/usr/bin/startfluxbox}
+   [end]
+
+   [config] (Configuration)
+   [submenu] (Styles) {}
+      [stylesdir] (/usr/share/fluxbox/styles)
+      [stylesdir] (~/.fluxbox/styles)
+   [end]
+   [workspaces] (Workspaces)
+   [reconfig] (Reconfigure)
+   [restart] (Restart)
+   [exit] (Exit)
+
+[end]

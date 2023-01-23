@@ -1,0 +1,2 @@
+conky -c ~/.conky/conkyrc &
+exit

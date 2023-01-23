@@ -1,0 +1,3 @@
+#!/bin/bash
+
+watch -d tree -shug -L 3 /deployments

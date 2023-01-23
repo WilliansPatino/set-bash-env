@@ -1,0 +1,19 @@
+...................................................................
+The fastest 10 servers seem to be:
+
+	http://mirror.cogentco.com/debian/
+	http://mirror.us.leaseweb.net/debian/
+	http://ftp.utexas.edu/debian/
+	http://mirror.i3d.net/debian/
+	http://mirror.seedvps.com/debian/
+	http://mirror.steadfast.net/debian/
+	http://debian.mirror.globo.tech/debian/
+	http://debian.mirror.iweb.ca/debian/
+	http://debian.ec.as6453.net/debian/
+	http://mirror.nforce.com/debian/
+
+Of the hosts tested we choose the fastest valid for HTTP:
+        http://mirror.cogentco.com/debian/
+
+Writing sources.list.
+Done.

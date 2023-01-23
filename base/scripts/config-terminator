@@ -1,0 +1,75 @@
+[global_config]
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child0]]]
+      order = 0
+      parent = ""
+      position = 446:100
+      size = 885, 550
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 444
+      type = HPaned
+    [[[child2]]]
+      order = 0
+      parent = child1
+      position = 275
+      type = VPaned
+    [[[child5]]]
+      order = 1
+      parent = child1
+      position = 219
+      type = HPaned
+    [[[child6]]]
+      order = 0
+      parent = child5
+      position = 275
+      type = VPaned
+    [[[child9]]]
+      order = 1
+      parent = child5
+      position = 275
+      type = VPaned
+    [[[terminal10]]]
+      command = export foo="bar" && cd /var/www/; bash
+      order = 0
+      parent = child9
+      profile = default
+      type = Terminal
+    [[[terminal11]]]
+      command = df -h; bash
+      order = 1
+      parent = child9
+      profile = default
+      type = Terminal
+    [[[terminal3]]]
+      command = dmesg -wH
+      order = 0
+      parent = child2
+      profile = default
+      type = Terminal
+    [[[terminal4]]]
+      command = watch -d df -h
+      order = 1
+      parent = child2
+      profile = default
+      type = Terminal
+    [[[terminal7]]]
+      command = free -h
+      order = 0
+      parent = child6
+      profile = default
+      type = Terminal
+    [[[terminal8]]]
+      command = cd ~/dev; bash
+      order = 1
+      parent = child6
+      profile = default
+      type = Terminal
+[plugins]
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"

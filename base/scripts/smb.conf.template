@@ -1,0 +1,29 @@
+# << Share >>
+[template]
+  comment = Backup and applications interfaces to this account/users/system
+
+# Path
+  path = /dsk2-vol1/profit.template/
+
+  browsable = yes
+  read only = yes
+
+# who can see the share/directory
+  valid users = template
+
+#-- PERMISSIONS ---
+  
+  #  drwxr-w---  for folders
+  directory mask = 2740
+  force directory mode = 0740
+
+  # rwxrw---- for files
+  create mask = 760
+
+  # write permission on disk 
+  write list = template 
+
+# end PERMISSIONS 
+
+invalid users = root bin daemon adm sync shutdown halt mail news uucp operator
+# << end >>

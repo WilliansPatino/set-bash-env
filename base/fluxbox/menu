@@ -1,0 +1,82 @@
+# This is an automatically generated file.
+# Please see <file:/usr/share/doc/menu/README> for information.
+
+# to use your own menu, copy this to ~/.fluxbox/menu, then edit
+# ~/.fluxbox/init and change the session.menuFile path to ~/.fluxbox/menu
+
+[begin] (Fluxbox)
+
+# Automatically generated file. Do not edit (see /usr/share/doc/menu/html/index.html)
+
+# My Favorites
+[submenu] (My Favorites Tools) {}
+[exec] (Audacious) {  /usr/bin/audacious }
+[exec] (Brave) { /usr/bin/brave-browser }
+[exec] (terminal) { gnome-terminal } 
+[exec] (Telegram) { telegram-desktop } 
+[exec] (Sublime text) { /opt/sublime_text/sublime_text } 
+[exec] (Thunderbird) { /usr/bin/thunderbird } 
+[exec] (Chromiun) { /usr/bin/chromium-browser } 
+[exec] (Xterm) { xterm -fb cyan -bg black} 
+[exec] (Lxterminal) { lxterminal } 
+[exec] (Dbase explorer) { dbeaver } 
+[exec] (MIn) {/usr/bin/min } 
+[exec] (Clementine) {clementine } 
+[exec] (VLC) {vlc } 
+[exec] (vmware) {/usr/bin/vmplayer } 
+[exec] (Opera) {/usr/bin/opera } </usr/share/pixmaps/opera.xpm>
+[exec] (Falkon) {/usr/bin/falkon } </usr/share/pixmaps/opera.xpm>
+[exec] (Firefox) {/usr/bin/firefox } </usrlib/firefox/Throbber-small.gif>
+[exec] (Terminator) {/usr/bin/terminator} </usr/share/pixmaps/terminator.png>
+[exec] (xtightvncviewer) {/usr/bin/xtightvncviewer} <>
+[exec] (Remote Desktop) {/usr/bin/remmina} <>
+[exec] (Transmission BitTorrent Client (GTK\)) {/usr/bin/transmission-gtk} </usr/share/pixmaps/transmission.xpm>
+[exec] (Process/Jobs HTOP) { xterm -T "hTop" -e htop} <>
+[exec] (Process/Jobs) { xterm -T "Top" -e /usr/bin/top} <>
+[exec] (Utilisations des disques) { xterm -T "Utilisation des disques" -e ~/_myLinuxENV/scripts/disk.sh} <>
+[exec] (Utilisations des disques comme Mega) { xterm -T "Utilisation des disques" -e ~/_myLinuxENV/scripts/disk-m.sh} <>
+[exec] (System Events by dmesg) { xterm -T "Events / dmesg" -e ~/_myLinuxENV/scripts/events.sh} <>
+[exec] (File Manager/xfe) {/usr/bin/xfe} <>
+[exec] (File Manager/Nautilus) {/usr/bin/nautilus} <>
+[exec] (File Manager/Nemo) {/usr/bin/nemo} <>
+[exec] (VM Manager) {/usr/bin/virt-manager } <>
+[end]
+
+
+
+
+
+# Screen
+[submenu] (Screen) {}
+      [submenu] (Locking) {}
+         [exec] (Lock Screen (XScreenSaver\)) {/usr/bin/xscreensaver-command -lock} <>
+      [end]
+      [submenu] (Saving) {}
+         [exec] (Activate ScreenSaver (Next\)) {/usr/bin/xscreensaver-command -next} <>
+         [exec] (Activate ScreenSaver (Previous\)) {/usr/bin/xscreensaver-command -prev} <>
+         [exec] (Activate ScreenSaver (Random\)) {/usr/bin/xscreensaver-command -activate} <>
+         [exec] (Demo Screen Hacks) {/usr/bin/xscreensaver-command -demo} <>
+         [exec] (Disable XScreenSaver) {/usr/bin/xscreensaver-command -exit} <>
+         [exec] (Enable XScreenSaver) {/usr/bin/xscreensaver} <>
+         [exec] (Reinitialize XScreenSaver) {/usr/bin/xscreensaver-command -restart} <>
+         [exec] (ScreenSaver Preferences) {/usr/bin/xscreensaver-command -prefs} <>
+      [end]
+[end]
+
+
+# Workspaces
+[workspaces] (Workspaces)
+
+# Reconfigure
+[reconfig] (Reconfigure)
+
+# Restart
+[restart] (Restart)
+
+# Exit
+[exit] (Exit)
+
+
+[exec] (Lock Screen (XScreenSaver\)) {/usr/bin/xscreensaver-command -lock} <>
+
+[end]

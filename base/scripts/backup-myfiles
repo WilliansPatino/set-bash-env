@@ -1,0 +1,164 @@
+#!/bin/bash
+#
+#  W.Patino  
+
+#  syncronize with my backup external disks 
+#
+#	-- Changeslog
+#	indicate which disk must be syncronize
+
+. ~/myLinuxENV/styles/setting
+
+
+is_testing=true
+clear
+
+# First of all, backup home user
+homeuser="/01_sd5/_linux_workspace/$HOSTNAME"
+
+
+# directorios para respaldar
+source_dirs=( "/01_sd5" "/01_sd6/sda6" )
+
+# destinationination (respectivamente)
+destinationination_dirs=( "/media/wp/_ext_sd3_ntfs_" "/media/wp/_ext_sd5_ntfs_" )
+
+# sincronyze disks
+backup_sd5=false
+backup_sd6=false
+
+# backup my linux directory
+if ! $is_testing; then
+	echo "Backing up $HOME..."
+	rsync -av $HOME  $homeuser/ \
+	--exclude={'.cache','.mozilla','.config','.aptitude','.local'}
+	echo -e "sudo rsync -av /home/wp /01_sd5/_linux_workspace/$HOSTNAME/"
+	echo "Done."
+else
+	echo -e "$STAR Backup $HOME to $homeuser/"
+	
+fi
+
+function doBackup () { 
+	local spath=$1
+	local source=$2
+	local destination=$3
+	
+	# use --dry-run 
+  	if $is_testing; then
+  	  		parameters='-an'
+  	else
+    	parameters='-a'
+  	fi
+
+  	#echo -e "$LBLUE $spath $CYAN $source  $LYELLOW $destination $RST"
+  	echo -e "   $STAR$STAR$STAR $CYAN $spath/$source $RST"
+
+  	# if [ ! -d $spath/$source ]; then
+  	# 	echo -e "$INFO source dir not found: $source"
+   #  fi
+  	
+  	# if [ ! -d $destination/$source ]; then
+  	# 		echo -e "$INFO $destination/$source not found"
+  	# fi
+
+  	checkdestinationination "$destination" "$source"
+  			echo -e ">>>  \trsync $parameters $spath/$source $destination/"
+  			rsync $parameters $spath/$source $destination/
+  			#sleep 1
+  		
+  	
+}
+
+
+function checkdestinationination () {
+	local path=$1
+	local dir=$2
+	#echo -e "$destination "
+	if [ ! -d $path/$dir ]; then
+  	echo -e "$INFO $LGREEN FULL Backup $RST $LRED $path/$dir $RST not Found in destination"
+  	 let fullbackup++
+  else 
+  	 echo -e "$GREEN Differential  $LYELLOW $path/$dir $RST"
+  	 let differential++
+  	 #du -chls $destinationinat
+  fi
+}
+
+
+
+
+
+#---- backup # 1
+sd5="/01_sd5"
+# directory to backup // sorted by modification date
+dir_at_sd5=(
+_sd-memory_backup
+HP-Printer-drivers
+_linux_workspace
+ISO_images_at_sda3
+_container_workshop_
+_octopus
+_my-music
+_tutorials_
+_for_evaluation-is_testing_
+_everything_for_LG-K11_
+_pending_for_finishing-or-checking_
+backup_da6_linuxmint
+respaldo-chachita
+respaldo-cathy
+run
+_my_config
+_my_scripts
+)
+
+
+#---- backup #2 // sorted by date
+sd6="/01_sd6/sda6"
+dir_at_sd6=(
+_backup_da5_linux_
+_driver_webcam_
+_Drivers_VIT-E1210-01_
+ISO_images_at_sda5
+Tutorials
+_backup_windows7_french-version_
+safe_way_to_flash_ISO_images
+_ISO_burners_
+run
+)
+
+
+
+if $backup_sd5; then
+	echo -e "$STAR Directorio raiz: $LBLUE ${source_dirs[0]}  $RST"
+	echo -e "$STAR$STAR Destination: $LYELLOW ${destinationination_dirs[0]} $RST"
+    fullbackup=0
+    differential=0
+    for y in ${dir_at_sd5[@]}
+	do
+		
+		doBackup "${source_dirs[0]}" "$y" "${destinationination_dirs[0]}"
+		
+	done
+	echo -e "::: Resumen"
+	echo -e "Total directorios:  ${#dir_at_sd5[@]}"
+	echo -e "Directorios (Diferencial):  $differential"
+	echo -e "Directorios (Full Backup): $fullbackup"
+fi
+
+if $backup_sd6; then
+	echo -e "$STAR Directorio raiz: $LBLUE ${source_dirs[1]}  $RST"
+    fullbackup=0
+    differential=0
+    for y in ${dir_at_sd6[@]}
+	do
+		doBackup "${source_dirs[1]}" "$y" "${destinationination_dirs[1]}"
+				
+	done
+	echo -e "::: Resumen"
+	echo -e "Total directorios:  ${#dir_at_sd6[@]}"
+	echo -e "Directorios (Diferencial):  $differential"
+	echo -e "Directorios (Full Backup): $fullbackup"
+fi
+	
+exit 0

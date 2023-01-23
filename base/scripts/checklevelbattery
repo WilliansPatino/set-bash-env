@@ -1,0 +1,39 @@
+#!/bin/bash
+#
+#  W.Patino 11.05.2020, 10h40
+
+
+#cmd=$(cat /sys/class/power_supply/BAT0/capacity)
+#cmd=`cat /sys/class/power_supply/BAT0/capacity`
+echo -e "Battery level: cmd %"
+
+# completely charged
+if [ cmd -gt 89 ] || [ cmd -eq 100 ]
+then 
+		msg="GOOD: Battery Level completely charged "
+elif [ cmd -gt 15 ] && [ cmd -lt 26 ]
+then 
+		msg=" Battery Level  cmd % "
+elif [ cmd -eq 25 ]
+then 
+		msg="ALERT! Battery level $c 25 %"
+elif [ cmd -gt 9 ] && [ cmd -lt 16 ]
+then 
+		msg="WARNING: Battery Level need power_supply "
+else 
+	    msg="OOPS!! Computer is nearly to be shutdown"
+fi
+
+exit 1
+acpi -V > ~/status-myserver.txt
+sensors >> ~/status-myserver.txt
+echo $msg
+echo $msg | mail -s "{INFO} MacBook Server Status" \
+   wpatino@grupojules.com -A status-myserver.txt
+
+vpn
+@v2XyH9@K$
+
+profit
+
+p#rof>888.plus

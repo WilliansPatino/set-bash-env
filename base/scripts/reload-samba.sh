@@ -1,0 +1,1 @@
+smbcontrol all reload-config

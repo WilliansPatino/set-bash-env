@@ -1,0 +1,42 @@
+#!/bin/bash
+
+#  Willians Patino, 21.04.2020, 9h51
+
+#   Crear containers
+
+# servers where will be running docker/containers
+server_ip="192.168.250.6"
+
+ ##  TEST as  default 
+container_name="TEST"   
+
+#   grupojules.com   as   default
+domain="grupojules.com"
+
+usage="Programa para crear containers
+
+\e[32m Uso: $(basename "$0")   [-h] <container> <domain> <ip>  \e[0m 
+
+donde:
+    -h  show this help text
+    -s  set the seed value (default: 42)"
+
+seed=42
+while getopts ':hs:' option; do
+  case "$option" in
+    h) echo -e "\t\e[32m $usage \e[0m\n"
+       exit
+       ;;
+    s) seed=$OPTARG
+       ;;
+    :) printf "\t\e[31m missing argument for -%s \e[0m \n" "$OPTARG" >&2
+       echo -e "$usage" >&2
+       exit 1
+       ;;
+   \?) printf "\t\e[31m illegal option: -%s  \e[0m \n" "$OPTARG" >&2
+       echo -e "$usage" >&2
+       exit 1
+       ;;
+  esac
+done
+shift $((OPTIND - 1))

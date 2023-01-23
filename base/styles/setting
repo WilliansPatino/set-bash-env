@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# W.Patino, 11h14, 24.05.2020
+# a little bit visual
+
+
+GREEN="\e[32m"
+RED="\e[31m"
+CYAN="\e[35m"
+RST="\e[0m"
+RESALT="\e[41m"
+BLINK="\e[5m"
+BLUE="\e[34m"
+YELLOW="\e[93m"
+LGRE="\e[92m"
+AST="$GREEN*$RST"
+ALERT="$BLINK$RESALT ALERT $RST"
+WARN="$BLINK$YELLOW !!! $RST"
+INF="$LGRE INFO $RST"
+BULLET="$LGRE o $RST"
+
+# updated
+START="$GREEN*$RST"
+ERROR="$RED ERROR! $RST"
+ERR=$ERROR
+WARNING="$BLINK $YELLOW WARNING $RST"
+INFO="$GREEN INFO:$RST"
+OK="[$LGRE OK $RST ]"
+
+
+
+
+
