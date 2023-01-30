@@ -69,19 +69,19 @@ alias stlsini='sudo systemctl "$@" start'
 alias_apt() {
 
     # apt 
-    echo -e "(apt) Alias: apti, apts, aptd, aptq, aptu "
+    echo -e "(apt) Alias: apti (install), apts (search), aptd (remove), aptq (info), aptu (update) "
     alias apti='sudo aptitude install "$@"'
     alias aptr='sudo aptitude reinstall'
     alias apts='aptitude search "$@"'
     alias aptd='sudo aptitude remove'
-    alias aptq='aptitude info "$@" '
+    alias aptq='aptitude show "$@" '
     alias aptu='sudo aptitude update'
 }
 
 alias_dnf() {
 
     # dnf
-    echo -e "(dnf) Alias: dnfi dnfs dnfr dnfu"
+    echo -e "(dnf) Alias: dnfi (install),  dnfs (search), dnfr (remove), dnfu (update), dnfq (info)"
     alias dnfi='sudo dnf install "$@"'
     alias dnfs='sudo dnf search "$@"'
     alias dnfr='sudo dnf remove "$@"'
@@ -319,13 +319,19 @@ enable_browsersync() {
     export REMOTE_IP
 }
 # --- Browser sync // Web Server basado en node 
-if [ ! -f `which browser-sync` ]; then
-    echo 'browser-sync no esta instalado'
+source ~/$CE/base/config/isInstalledNode.sh
 
-    sudo npm install -g npm@9.4.0
-    sudo npm install -g browser-sync
-else
-    echo -e "$OK browser-sync instalado"
-    enable_browsersync
+if [ $found_nodejs == "true" ]; then
+    # now, es posible instalar paquetes via npm
+    if [ -f `which browser-sync` ]; then
+        echo -e "$OK browser-sync instalado"
+        enable_browsersync
+    else
+        sudo npm install -g npm@9.4.0
+        sudo npm install -g browser-sync
+        echo 'browser-sync no esta instalado'
+        enable_browsersync
+    fi
 fi
+
 
