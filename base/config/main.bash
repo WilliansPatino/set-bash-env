@@ -306,28 +306,34 @@ enable_powerline() {
 # isInstalled powerline
 # Chequear aplicaciones instaladas
 source ~/$CE/base/config/isAppInstalled.sh; 
-
 is_app_installed powerline
-if [  $app_installed == "false" ]; then
-    echo 'Powerline no esta instalado'
 
-    if [ os_result == "rpm" ]; then
-        install_package powerline powerline-fonts # install powerline for Fedora
-    fi
+in_case_powerline_not_found() {
 
-    if [ os_result == "deb" ]; then
-        install_package powerline fonts-powerline # install powerline for Debian
+        check_os
+
+        echo -e "Install powerline para .$os_result "
+        if [ $os_result == "rpm" ]; then
+            install_package powerline powerline-fonts # install powerline for Fedora
+        fi
+        if [ $os_result == "deb" ]; then
+            install_package powerline fonts-powerline # install powerline for Debian
+        fi
+
+        enable_powerline
+}
+
+if [ $app_installed == "true" ]; then
+    if [ -f `which powerline` ]; then
+        enable_powerline
+    else
+        in_case_powerline_not_found
     fi
 else
-    enable_powerline
+    in_case_powerline_not_found
 fi
 
-
-# if [  -f `which powerline` ]; then
-
-# else 
-
-
+# Web server 
 enable_browsersync() {
     REMOTE_IP1="10.42.0.1"
     REMOTE_IP2="192.168.1.253"
