@@ -189,6 +189,7 @@ fi
 
 echo -e "$BULLET Instale algunos paquetes favoritos con este:  ~/$CE/base/pkg/install-fav.sh"
 
+
 # instalar pkg de acuerdo a la distro
 install_package() {
 
@@ -219,7 +220,7 @@ install_package() {
     echo 'End install...'
 }
 
-isInstalled() {
+ChooseDistro() {
 
     check_os
 
@@ -250,9 +251,12 @@ isInstalled() {
     esac
 }
 
-isInstalled powerline
 
-set_environment() {
+
+
+
+# Habilita entorno y Bash prompt
+set_prompt_and_environment() {
 
     check_os
 
@@ -289,32 +293,50 @@ set_environment() {
 
 }
 
-# Customized bash prompt
+# habilita el prompt with Powerline
 enable_powerline() {
      powerline-daemon -q
      POWERLINE_BASH_CONTINUATION=1
      POWERLINE_BASH_SELECT=1
 
-   set_environment
+   set_prompt_and_environment
 
 }
 
+# isInstalled powerline
+# Chequear aplicaciones instaladas
+source ~/$CE/base/config/isAppInstalled.sh; 
 
+is_app_installed powerline
+if [  $app_installed == "false" ]; then
+    echo 'Powerline no esta instalado'
 
-if [  -f `which powerline` ]; then
-   enable_powerline
+    if [ os_result == "rpm" ]; then
+        install_package powerline powerline-fonts # install powerline for Fedora
+    fi
 
-else 
-   echo 'Powerline no esta instalado'
-
+    if [ os_result == "deb" ]; then
+        install_package powerline fonts-powerline # install powerline for Debian
+    fi
+else
+    enable_powerline
 fi
 
+
+# if [  -f `which powerline` ]; then
+
+# else 
+
+
 enable_browsersync() {
-    REMOTE_IP="10.42.0.1"
-    alias browsersync="browser-sync start -s -f . --no-notify --host $REMOTE_IP --port 9000 -w "
-    echo -e "$BULLET Inicia Web Server en tu proyecto, ejecutando:  browsersync
-                local: http://localhost:9000
-                Remote: http://$REMOTE_IP:9000
+    REMOTE_IP1="10.42.0.1"
+    REMOTE_IP2="192.168.1.253"
+    alias browsersync=" browser-sync start -s -f . --no-notify --host $REMOTE_IP --port 9000 -w "
+    echo -e "$BULLET (browser-sync instalado) -  Inicia tu servidor web en tu proyecto, 
+        ejecutando:  browsersync
+             Ruta local: http://localhost:9000
+                 Remote: http://$REMOTE_IP1:9000
+             Alt Remote: http://$REMOTE_IP2:9000
     "
     export REMOTE_IP
 }
@@ -324,7 +346,6 @@ source ~/$CE/base/config/isInstalledNode.sh
 if [ $found_nodejs == "true" ]; then
     # now, es posible instalar paquetes via npm
     if [ -f `which browser-sync` ]; then
-        echo -e "$OK browser-sync instalado"
         enable_browsersync
     else
         sudo npm install -g npm@9.4.0
