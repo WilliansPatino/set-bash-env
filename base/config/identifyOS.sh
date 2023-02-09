@@ -2,9 +2,10 @@
 
 
 # Customized bash dir 
-CE="custom-env"
+CE="customEnv4Bash"
+MYCONFIGENV="/opt/$CE/" 
 
-. ~/$CE/base/styles/setting 
+source $MYCONFIGENV/base/styles/setting 
 
 
 # identificar OS

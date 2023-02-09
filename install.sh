@@ -35,7 +35,7 @@ update_bash_v2() {
 	echo ' notify_how_install_settings() { '
 	echo ' '
 	echo '  echo -e "\nCustom config no existe en opt \n-- Recarge los componentes: \n" '
-	echo '  echo -e " \tgit clone https://github.com/WilliansPatino/custom-env.git \n"     '
+	echo '  echo -e " \tgit clone https://github.com/WilliansPatino/customEnv4Bash.git \n"     '
 	echo '  echo -e "Compruebe que sea instalado desde la raíz de su directorio "      '
 	echo '} '
 	echo ' '

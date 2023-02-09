@@ -1,7 +1,8 @@
 #!/bin/bash
+CE="customEnv4Bash"
+MYCONFIGENV="/opt/$CE/" 
 
-CE="custom-env"
-. ~/$CE/base/styles/setting
+source $MYCONFIGENV/base/styles/setting
 
 echo -e "$BULLET Chequeando paquetes favoritos"
 install_debpackages() {
@@ -41,7 +42,7 @@ install_rpmpackages() {
 		fi
 }
 
-source ~/$CE/base/config/identifyOS.sh
+source $MYCONFIGENV/base/config/identifyOS.sh
 check_os
 
 case $os_result in
