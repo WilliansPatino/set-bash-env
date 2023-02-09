@@ -1,22 +1,22 @@
 #!/bin/bash
 
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
 
 # Directorio principal del entorno de trabajo para Docker
-MSA="/my-containers"  # microservices environment
+MSA="containers"  # microservices environment
 
 # Deployments  Docker
-DEPLOY="/deployments"
+DEPLOY="deployments"
 
 # Customized bash dir 
 CE="customEnv4Bash"
 MYCONFIGENV="/opt/$CE/"
 
 
-# If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
 
 source $MYCONFIGENV/base/styles/setting 
 
@@ -30,11 +30,6 @@ source $MYCONFIGENV/base/config/identifyOS.sh
 # fi
 
 
-
-# todos mis scripts para simplificar tareas
-if [ -d "$HOME/_myscripts" ] ; then
-    export PATH="$PATH:$HOME/_myscripts"
-fi
 
 
 # lo mismo pero con algunos retoques
@@ -57,10 +52,7 @@ fi
 
 
 #  entorno de Programacion Go
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH="$HOME:/Go-workspace"
-
-
+export GOPATH="$HOME:/environment_GO"
 
 # systemctl
 echo -e "(systemctl) Alias:  [ status: stlstat <s>, stop: stlstop <s>, start: stlini  <s> ]"
@@ -93,13 +85,13 @@ alias_dnf() {
 
 # Docker 
 if [ -d /msa/cmt/deploy/micro-LAMP ]; then
-   export PATH="$PATH:/msa/cmt/deploy/micro-LAMP/"
+   export PATH="$PATH:$MSA/cmt/deploy/micro-LAMP/"
 fi
 
 
 
 
-# my scripts ready to use it
+# my scripts by using custom environment
 export PATH="$PATH:$HOME/$MYCONFIGENV/base/scripts"
 
 
