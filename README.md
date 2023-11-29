@@ -58,17 +58,20 @@ python setup.py install
 
 - Configure su indicador de shell siguiendo las instrucciones para su shell a continuación.
 
-### Configuración programado de componentes
+### Cómo desabilitar la ejecución de este entorno personalizado
 
-Agregue lo siguiente a su archivo  ".bashrc" :
+Remover de los siguientes archivos:
+    - .bashrc
+    - .profile
+    - .bash_profile
+
+esta parte del código: 
+
+
+
+
 
 ```
-function _update_ps1() {
-    PS1=$(powerline-shell $?)
-}
 
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
 ```
 
