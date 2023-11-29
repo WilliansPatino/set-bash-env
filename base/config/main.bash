@@ -8,7 +8,7 @@ MSA="/my-containers"  # microservices environment
 DEPLOY="/deployments"
 
 # Customized bash dir 
-CE="customEnv4Bash"
+CE="set-bash-env"
 MYCONFIGENV="/opt/$CE/"
 
 
