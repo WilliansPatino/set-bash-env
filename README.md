@@ -5,11 +5,12 @@ Accesos, prompt e instalación automática de paquetes
 
 ## Instalación
 
-```
-$ ~ > git clone https://github.com/WilliansPatino/set-bash-env.git
+    git clone https://github.com/WilliansPatino/set-bash-env.git
 
-$ ~ > bash customEnv4Bash/install.sh
-```
+
+
+    bash set-bash-env/install.sh
+
 
 
 ## Bash prompt
