@@ -13,7 +13,7 @@ Accesos, prompt e instalación automática de paquetes
 
 
 
-## Bash prompt
+## Vista previa del prompt
 
 
 ![MacVim+Solarized+Powerline+CtrlP](https://raw.github.com/b-ryan/powerline-shell/master/bash-powerline-screenshot.png)
