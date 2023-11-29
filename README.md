@@ -6,7 +6,7 @@ Accesos, prompt e instalación automática de paquetes
 ## Instalación
 
 ```
-$ ~ > git clone https://github.com/WilliansPatino/customEnv4bash.git
+$ ~ > git clone https://github.com/WilliansPatino/set-bash-env.git
 
 $ ~ > bash customEnv4Bash/install.sh
 ```
