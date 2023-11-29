@@ -18,7 +18,13 @@ Accesos, prompt e instalación automática de paquetes
 
 ![MacVim+Solarized+Powerline+CtrlP](https://raw.github.com/b-ryan/powerline-shell/master/bash-powerline-screenshot.png)
 
-## Prestaciones
+## Prestaciones del Powerline configurado para el entorno bash
+
+- Muestra algunos detalles importantes sobre la rama git/svn/hg/fossil (ver más abajo)
+- Cambia de color si el último comando salió con un código de error
+- Si está demasiado metido en un árbol de directorios, acorte la ruta mostrada con puntos suspensivos
+- Muestra el entorno virtualenv de Python actual.  [virtualenv](http://www.virtualenv.org/) 
+- Es fácil de personalizar y ampliar. Vea a continuación para más detalles.
 
 - Shows some important details about the git/svn/hg/fossil branch (see below)
 - Changes color if the last command exited with a failure code
