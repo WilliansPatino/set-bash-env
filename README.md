@@ -58,7 +58,7 @@ python setup.py install
 
 - Configure su indicador de shell siguiendo las instrucciones para su shell a continuación.
 
-### Bash
+### Configuración programado de componentes
 
 Agregue lo siguiente a su archivo  ".bashrc" :
 
