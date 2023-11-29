@@ -3,11 +3,11 @@
 Accesos, prompt e instalación automática de paquetes
 
 
-## Instalación
+## Descargar en el PC
 
     git clone https://github.com/WilliansPatino/set-bash-env.git
 
-
+##  habilitar en el Bash
 
     bash set-bash-env/install.sh
 
