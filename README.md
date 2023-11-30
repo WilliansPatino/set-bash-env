@@ -44,7 +44,6 @@ cd powerline-shell
 python setup.py install
 ```
 
-- Configure su indicador de shell siguiendo las instrucciones para su shell a continuación.
 
 ### Cómo desabilitar la ejecución de este entorno personalizado
 
