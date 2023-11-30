@@ -60,12 +60,64 @@ python setup.py install
 
 ### Cómo desabilitar la ejecución de este entorno personalizado
 
-Remover de los siguientes archivos:
+Remover esta parte de código en los archivos mencionados a continuación a pie de página.
+
+```
+
+#   -- Entorno personalizado para Bash --     
+# por Willians Patiño, actualizado: 9.2.23   
+ 
+CE="set-bash-env" 
+MYCONFIGENV="/opt/$CE/"  
+ 
+install_settings() {					       
+    #--- setting moved outside from homeuser 
+    sudo mv $CE $MYCONFIGENV  			   
+    echo -e "\nLa configuración del entorno fue instalada" 
+    echo -e "\t $MYCONFIGENV \n "            
+    # ls /opt -l							   
+}  
+   
+enable_env() { 
+    if [ -f $MYCONFIGENV/base/config/main.bash ]; then
+       source  $MYCONFIGENV/base/config/main.bash     
+    fi   
+} 
+ 
+ notify_how_install_settings() { 
+ 
+  echo -e "\nCustom config no existe en opt \n-- Recarge los componentes: \n" 
+  echo -e " \tgit clone https://github.com/WilliansPatino/set-bash-env.git \n"     
+  echo -e "Compruebe que sea instalado desde la raíz de su directorio "      
+} 
+ 
+if [ -d $CE ]; then  ## Does the main dir exit?  
+ 
+    install_settings    
+    enable_env          
+   
+elif [ -d $MYCONFIGENV ] 
+    then       ## Does the main dir exist at /opt  ? 
+        if [ -f $MYCONFIGENV/base/config/main.bash ] # Exist setting at /opt ? 
+        then 
+            enable_env 
+        else 
+            notify_how_install_settings  
+        fi   
+else  
+    notify_how_install_settings  
+fi  
+#  End update bash  
+
+```
+
+
+
     - .bashrc
     - .profile
     - .bash_profile
 
-esta parte del código: 
+
 
 
 
