@@ -111,11 +111,12 @@ fi
 
 ```
 
+###  Archivos que habilitan el entorno personalizado
 
 
-    - .bashrc
-    - .profile
-    - .bash_profile
+- .bashrc
+- .profile
+- .bash_profile
 
 
 
