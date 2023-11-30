@@ -63,10 +63,12 @@ export GOPATH="$HOME:/Go-workspace"
 
 
 # systemctl
-echo -e "(systemctl) Alias:  [ status: stlstat <s>, stop: stlstop <s>, start: stlini  <s> ]"
-alias stlstat='sudo systemctl "$@" status'
-alias stlstop='sudo systemctl "$@" stop'
-alias stlsini='sudo systemctl "$@" start'
+echo -e "Alias de systemctl: \n  \t scinfi <service> - status del servicio"
+echo -e "\t scstop <service>  - Detener servicio \n \t screst <service> - reiniciar servicio "
+
+alias scinfo='sudo systemctl "$@" status'
+alias scstop='sudo systemctl "$@" stop'
+alias screst='sudo systemctl "$@" start'
 
 alias_apt() {
 
