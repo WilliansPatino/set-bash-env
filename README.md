@@ -45,9 +45,9 @@ python setup.py install
 ```
 
 
-### Cómo desabilitar la ejecución de este entorno personalizado
+## Cómo desabilitar el entorno Bash personalizado
 
-Remover esta parte de código en los archivos mencionados a continuación a pie de página.
+Remover esta parte de código en los archivos mencionados al final.
 
 ```
 
@@ -98,8 +98,7 @@ fi
 
 ```
 
-###  Archivos que habilitan el entorno personalizado
-
+##  Archivos 
 
 - .bashrc
 - .profile
