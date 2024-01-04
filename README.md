@@ -1,24 +1,28 @@
-# Entorno bash personalizado 
+# Personaliza tu entorno de la consola de comando
 
-Accesos, prompt e instalación automática de paquetes
+Características:
 
+    - Alias de comandos
+    - prompt basado en Powerline
+    - Instalación de paquetes esenciales
+    
 
 ## Descargar en el PC
 
     git clone https://github.com/WilliansPatino/set-bash-env.git
 
-##  Habilitar en el Bash
+##  Instalación
 
     bash set-bash-env/install.sh
 
 
 
-## Vista previa del prompt
+## Modelo del prompt 
 
 
 ![MacVim+Solarized+Powerline+CtrlP](https://raw.github.com/b-ryan/powerline-shell/master/bash-powerline-screenshot.png)
 
-## Prestaciones del Powerline configurado para el entorno bash
+## Prestaciones del Powerline 
 
 - Muestra algunos detalles importantes sobre la rama git/svn/hg/fossil (ver más abajo)
 - Cambia de color si el último comando salió con un código de error
@@ -27,7 +31,7 @@ Accesos, prompt e instalación automática de paquetes
 - Es fácil de personalizar y ampliar. Vea a continuación para más detalles.
 
 
-## Sólo en caso de habilitar el prompt `Powerline`
+## En caso de instalación manual 
 
 
 - Instalación usando pip:
@@ -45,7 +49,7 @@ python setup.py install
 ```
 
 
-## Cómo desabilitar el entorno Bash personalizado
+## Cómo desabilitar este entorno
 
 Remover esta parte de código en los archivos mencionados al final.
 
@@ -98,7 +102,7 @@ fi
 
 ```
 
-##  Archivos 
+##  Archivos a modificar
 
 - .bashrc
 - .profile
@@ -106,8 +110,7 @@ fi
 
 
 
-
-
+Abre una nueva terminal  
 
 
 ```
